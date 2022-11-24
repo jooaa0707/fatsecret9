@@ -49,7 +49,7 @@ with col1:
 with col2:
 
     st.write('오늘 저녁에 뭘 먹을 수 있냐면요....^^')
-    cal_data = pd.read_excel('fatsecret.xlsx')
+    cal_data = pd.read_csv('fatsecret.csv')
     cal_search_basket=cal_data[cal_data['basket']==1]
     cal_search_basket_rec=cal_search_basket[cal_search_basket['cal2']< 300]
     st.table(cal_search_basket_rec[['name','cal2']])
