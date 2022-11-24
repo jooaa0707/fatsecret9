@@ -48,7 +48,7 @@ with col1:
 with col2:
     @st.cache
     def load_data():
-        df = pd.read_excel('fatsecret.xlsx',engine = 'openpyxl')
+        df = pd.read_csv('fatsecret.csv')
         return df
 
     cal_data = load_data()
