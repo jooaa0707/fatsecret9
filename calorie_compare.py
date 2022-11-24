@@ -54,7 +54,7 @@ with col2:
     cal_data = load_data()
     cal_search=cal_data.loc[cal_data['name'].str.contains(text_input)]
     cal_search2=cal_search.sort_values(by='cal2',ascending=True)
-    cal_search3=cal_search2.T
+    cal_search3=cal_search2.T.drop(["id","basket"])
     # 컬럼 나머지 부분에 라인차트 생성
     st.table(cal_search3)
 

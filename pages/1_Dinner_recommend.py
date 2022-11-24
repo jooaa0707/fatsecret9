@@ -28,7 +28,7 @@ col1, col2, col3 = st.columns([1,2,1])
 with col1:
     st.button("🍚아침 입력")
     text_input_1 = st.text_input(
-        "아침 먹은 음식을 입력해주세요 👉","참치마요 삼각김밥"
+        "아침 먹은 음식을 입력해주세요 👉","동의 훈제란"
     )
 
     st.button("🍚점심 입력")
@@ -38,7 +38,7 @@ with col1:
 
     st.button("🍟간식 입력")
     text_input_3 = st.text_input(
-        "간식 먹은 음식을 입력해주세요 👉","동의 훈제란"
+        "간식 먹은 음식을 입력해주세요 👉","치즈 프로틴칩"
     )
 
     
@@ -46,11 +46,14 @@ with col1:
 with col2:
 
     st.write('오늘 저녁에 뭘 먹을 수 있냐면요....^^')
+    
     cal_data = pd.read_csv('fatsecret.csv')
-    din = goal-(cal_data[cal_data['name']==text_input_1].cal2+cal_data[cal_data['name']==text_input_2].cal2+cal_data[cal_data['name']==text_input_3].cal2)
+    din = goal-(cal_data[cal_data['name']==text_input_1].cal2.values[0]+cal_data[cal_data['name']==text_input_2].cal2.values[0]+cal_data[cal_data['name']==text_input_3].cal2.values[0])
     cal_search_basket=cal_data[cal_data['basket']==1]
-    cal_search_basket_rec=cal_search_basket[cal_search_basket['cal2']< din.values[0]]
+    cal_search_basket_rec=cal_search_basket[cal_search_basket['cal2']< din].head(5)
     st.table(cal_search_basket_rec[['name','cal2']])
+    st.write('남은 저녁 칼로리는')
+    st.write(din)
     #cal_search3=cal_search2.T
     # 컬럼 나머지 부분에 라인차트 생성
    # st.table(cal_search3)
