@@ -27,7 +27,7 @@ col1, col2 = st.columns([1, 2])
 with col1:
     genre = st.radio(
         "🍎어떤 순서로 검색할까요?",
-        ('칼로리', '단백질', '지방'))
+        ('단백질', '칼로리', '지방'))
 
     st.write('You selected: ', genre)
 
@@ -45,18 +45,20 @@ with col1:
 with col2:
     @st.cache
     def load_data():
-        df = pd.read_csv('fatsecret.csv')
+        df = pd.read_csv('fatsecret9.csv')
         return df
 
     cal_data = load_data()
     cal_search=cal_data.loc[cal_data['name'].str.contains(text_input)]
-    if genre == '칼로리':
-        cal_search2=cal_search.sort_values(by='cal2', ascending=True) 
-    elif genre == '단백질':
+
+    if genre == '단백질':
         cal_search2=cal_search.sort_values(by='protein2', ascending=False) 
+    elif genre =='칼로리':
+        cal_search2=cal_search.sort_values(by='cal2', ascending=True) 
     else:
         cal_search2=cal_search.sort_values(by='fat2', ascending=True) 
-    cal_search3=cal_search2.T.drop(["id","basket","cal2"])
+
+    cal_search3=cal_search2.T.drop(["id","basket"])
     # 컬럼 나머지 부분에 라인차트 생성
     st.table(cal_search3)
 
