@@ -58,7 +58,7 @@ with col2:
     else:
         cal_search2=cal_search.sort_values(by='fat2', ascending=True) 
 
-    cal_search3=cal_search2.T.drop(["id","basket"])
+    cal_search3=cal_search2.T.drop(["id","basket","cal2","protein2","fat2"])
     # 컬럼 나머지 부분에 라인차트 생성
     st.table(cal_search3)
 
