@@ -26,19 +26,16 @@ goal = 3000
 col1, col2, col3 = st.columns([1,2,1])
 
 with col1:
-    st.button("🍚아침 입력")
     text_input_1 = st.text_input(
-        "아침 먹은 음식을 입력해주세요 👉","동의 훈제란"
+        "🍚아침 먹은 음식을 입력해주세요 👉","동의 훈제란"
     )
 
-    st.button("🍚점심 입력")
     text_input_2 = st.text_input(
-        "점심 먹은 음식을 입력해주세요 👉","고기듬뿍 불고기 백반"
+        "🍚점심 먹은 음식을 입력해주세요 👉","고기듬뿍 불고기 백반"
     )
 
-    st.button("🍟간식 입력")
     text_input_3 = st.text_input(
-        "간식 먹은 음식을 입력해주세요 👉","치즈 프로틴칩"
+        "🍟간식 먹은 음식을 입력해주세요 👉","치즈 프로틴칩"
     )
 
     
@@ -47,7 +44,7 @@ with col2:
 
     st.write('오늘 저녁에 뭘 먹을 수 있냐면요....^^')
     
-    cal_data = pd.read_csv('fatsecret.csv')
+    cal_data = pd.read_csv('fatsecret9.csv')
     din = goal-(cal_data[cal_data['name']==text_input_1].cal2.values[0]+cal_data[cal_data['name']==text_input_2].cal2.values[0]+cal_data[cal_data['name']==text_input_3].cal2.values[0])
     cal_search_basket=cal_data[cal_data['basket']==1]
     cal_search_basket_rec=cal_search_basket[cal_search_basket['cal2']< din].head(5)
