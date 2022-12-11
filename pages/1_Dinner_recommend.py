@@ -25,7 +25,7 @@ col1, col2, col3 = st.columns([1,1,1])
 with col1:
     with st.container():
         st.write("먼저 당신의 목표 칼로리를 계산해드립니다.")
-        height = st.number_input('키를 입력하세요',170)
+        height = st.number_input('키를 입력하세요',160)
         weight = st.number_input('몸무게를 입력하세요',50)
         age = st.number_input('나이를 입력하세요',35)
         basal_netabolism=round(655.1 + (9.56 * weight) + (1.85 * height) - (4.68 *age),1)
@@ -37,7 +37,7 @@ with col1:
     st.write("\n")
     st.write("\n")
     # 칼로리 계산 끝
-    st.write("미라님의 오늘 하루 목표 칼로리는",goal)
+    st.write("혜윤님의 오늘 하루 목표 칼로리는",goal)
 
 with col2:
     text_input_1 = st.text_input(
